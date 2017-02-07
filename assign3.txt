@@ -1,0 +1,99 @@
+JavaScript variables can belong to the local or global scope.
+Local space includes that define inside a function.
+Global variables can be made local (private) with closures.
+
+To understand the local and global space,consider following two examples:
+Example1:
+
+let my global="Global Variable";
+function(){
+let my local="local variable";
+console.log(my local)
+console.log(my global)
+}
+Output is:
+Global vrariable
+local variale
+
+Example2:
+
+let my global="Global Variable";
+function(){
+let my local="local variable";
+
+}
+console.log(my local)
+console.log(my global)
+
+Output is:
+
+undefined
+Global variable
+
+Because the global scope outside the function does not have access to local variable.
+
+In order to make local variable a part of global scope,we can use window object.To illustrate consider following example:
+Example:
+
+let my global="Global Variable";
+function(){
+window.my local="local variable";
+
+}
+console.log(my local)
+console.log(my global)
+
+Output is :
+local variable
+Global Variable
+
+At last When there are nested function it creates a scope chain,to understand consider following example:le
+
+let myvar="A global variable";
+function Level3(){
+    function level2(){
+       function level1(){
+             console.log(myvar);
+                        }
+                level1();
+                     }
+                level2();
+               }
+             level3();
+
+Output is:
+A global variable.
+
+Explanation :In this example it looks  for "myvar" under level 2 scope first and then level3 and it keeps going to its upper function until it founds a value.
+
+
+---If there was "myvar" variable in each fuction it would have displayed that one which is closest to it.---See the following example:
+
+let myvar="A global variable";
+function Level3(){
+     let myvar="A level3 local variable";
+    function level2(){
+       let myvar="A level2 local variable";
+       function level1(){
+             console.log(myvar);
+                        }
+                level1();
+                     }
+                level2();
+               }
+             level3();
+ OUTPUT IS:
+
+ level2 local variable
+
+To sum up :
+A closure is a connection between function scope and scope of its parent..All closures are intrinsically tied to its parent.
+
+
+Resources:1.Teamlearnable you tube video:
+          https://www.youtube.com/watch?v=iSlSxDNarDY
+          2.W3schools website.
+
+
+
+
